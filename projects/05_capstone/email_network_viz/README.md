@@ -1,29 +1,28 @@
-# 🌐 Capstone Project: Email Network Analysis
+# 🌐 Capstone Project: Email Network Analysis (Sakai Archive)
 
-This project represents the complete data pipeline developed during the Capstone course of the Python for Everybody Specialization. It focuses on using Python and SQL to analyze a large corpus of email data.
+This project showcases a comprehensive **Data Pipeline (ETL)** built using Python and SQLite, processing over 1GB of real-world email data from the Sakai developer mailing list.
 
 ## Goal and Methodology
 
-The primary goal is to retrieve, process, and visualize the organization's communication patterns (who emails whom) from a publicly available dataset (the Sakai archive).
+The primary goal is to retrieve, clean, and visualize the organizational communication patterns within the email corpus. This demonstrates mastery over network access, SQL normalization, and data analysis.
 
-The project workflow covers key areas of a data science pipeline:
+The entire workflow is split into three distinct, professional stages:
 
-1.  **Data Retrieval & Cleaning (`gmane.py` / `mbox.py`):** Scripts parse email headers from a large `.mbox` file to extract sender organizations and normalized email addresses.
-2.  **Database Storage (SQLite):** Normalized data (emails, senders, and counts) is loaded into a dedicated SQLite database (`org_network.sqlite`) using Python's `sqlite3` library. This step demonstrates **SQL** and efficient data storage.
-3.  **Visualization Preparation (`gbasic.py`):** The Python script queries the SQL database to process and output the data in the necessary format for JavaScript visualization.
-4.  **Network Visualization (D3.js):** The resulting data is used by the **`gline.js`** or **`gbasic.js`** file to render an interactive force-directed graph (using D3.js) that maps organizational connections and message timelines.
+### 1. Data Retrieval and Spidering
+* **Script:** `gmane.py` is used to download emails and store the raw data.
+
+### 2. Data Cleaning and Normalization
+* **Script:** `gmodel.py` reads the raw data, performs cleaning and normalization, outputting the results into the final analysis database (`index.sqlite`).
+
+### 3. Analysis and Visualization
+* **Script:** `gbasic.py` queries the clean database (`index.sqlite`) to prepare data for the interactive force-directed graph.
+* **Visualization:** The results feed into D3.js scripts (`gline.js`) to generate network graphs and message timelines.
 
 ## Technologies and Skills Demonstrated
 
 | Category | Skills & Tools |
 | :--- | :--- |
-| **Data Flow** | Complete Data Pipeline (ETL: Extract, Transform, Load) |
-| **Database** | **SQLite3**, **SQL** Queries (`SELECT`, `INSERT`), Database Schema Design |
-| **Python** | `sqlite3`, File I/O, Data Normalization |
-| **Visualization** | Interactive Web Visualization (D3.js / JavaScript) |
-
-## Setup and Execution
-
-To replicate the project:
-1.  Run the Python script (e.g., **`gbasic.py`**) to process the data and create the necessary `.js` output files.
-2.  Open the visualization file (**`gline.htm`** or **`gbasic.htm`**) in a web browser to view the network graph and timeline.
+| **Data Flow** | **Full Data Pipeline (ETL)**, API Consumption, Resumable Spidering |
+| **Database** | **SQLite3 / SQL**, **Database Normalization**, Schema Design |
+| **Python** | `gmane.py`, `gmodel.py`, `gbasic.py`, `sqlite3` |
+| **Visualization** | D3.js / JavaScript |
